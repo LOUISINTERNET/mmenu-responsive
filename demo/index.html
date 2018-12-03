@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Responsive Mmenu Demo</title>
+    <meta charset="utf-8" />
+
+    <link href="../node_modules/jquery.mmenu/dist/jquery.mmenu.all.css" rel="stylesheet" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/jquery.mmenu/dist/jquery.mmenu.all.js"></script>
+
+    <style>
+      svg {
+        width: 20px;
+      }
+    </style>
+
+
+    <script src="../dist/responsiveMmenu.bundle.js"></script>
+  </head>
+  <body>
+
+    <!-- The page -->
+    <div class="page">
+      <div class="header">
+        <a href="#menu">
+          <svg viewBox="0 0 32 32">
+            <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="content">
+        <p><strong>This is a demo.</strong><br />
+          Click the menu icon to open the menu.</p>
+      </div>
+    </div>
+
+    <!-- The menu -->
+    <nav id="menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About us</a>
+          <ul>
+            <li><a href="/about/history">History</a></li>
+            <li><a href="/about/team">The team</a></li>
+            <li><a href="/about/address">Our address</a></li>
+          </ul>
+        </li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      jQuery(document).ready(function( $ ) {
+        var createMmenu = function() {
+          $("#menu").mmenu();
+        }
+
+        responsiveMmenu(createMmenu, '#menu', 600)
+      });
+    </script>
+  </body>
+</html>
