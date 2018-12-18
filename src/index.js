@@ -10,7 +10,10 @@ const responsiveMmenu = (
   const parent = document.querySelector(navSelector).parentNode
   const switchFromMobilToDesktop = () => {
     document.querySelector(navSelector).remove()
-    document.querySelector('.mm-wrapper__blocker').remove()
+
+    const wrapper = document.querySelector('.mm-wrapper__blocker')
+    if(wrapper) wrapper.remove()
+
     document.querySelector('.mm-page').removeAttribute('style')
 
     const mmenuItemsWithId = document.querySelectorAll('[id*="mm-"]')
@@ -32,6 +35,13 @@ const responsiveMmenu = (
       createMmenu.call()
       mmenu = $(navSelector).data('mmenu')
     } else if (getBrowserWidth() > breakpoint && mmenu !== null) {
+
+      // For older mmenu versions
+      mmenu.bind('close', function () {
+        switchFromMobilToDesktop()
+      });
+
+      // For newer mmenu versions
       mmenu.bind('close:finish', function () {
         switchFromMobilToDesktop()
       });
